@@ -9,8 +9,8 @@ public class Weapons : MonoBehaviour
     [SerializeField] Camera fpCamera; 
     [SerializeField] float range = 100f; 
     [SerializeField] float damage = 35f; // Damage variable is defined here
-    [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject hitEffect;
+    [SerializeField] ParticleSystem muzzleFlash; // Variable for muzzle flash
+    [SerializeField] GameObject hitEffect; // variable for effect to be added
 
 
 
@@ -39,7 +39,7 @@ public class Weapons : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(fpCamera.transform.position, fpCamera.transform.forward, out hit, range))
         {
-            CreateHitImpact(hit);
+            CreateHitImpact(hit); // Method for hit effects is called in method for shooting gun
             // TODO: add some effects for more visual spectacle
             EnemyHealth target = hit.transform.GetComponent<EnemyHealth>();
             // call a method on EnemyHealth that decreases the enemy health
@@ -52,9 +52,9 @@ public class Weapons : MonoBehaviour
         }
     }
 
-    private void CreateHitImpact(RaycastHit hit)
+    private void CreateHitImpact(RaycastHit hit) // method for instantiating hit effect in world
     {
         GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
-        Destroy(impact, 0.1f);
+        Destroy(impact, 0.1f); //effect is destroyed after 0.1 seconds
     }
 }
