@@ -15,7 +15,7 @@ public class Weapons : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1")) // Bind for shooting
         {
-            ShootGun(); // method for shooting
+            ShootGun(); // method for shooting the weapon
         }
     }
 
